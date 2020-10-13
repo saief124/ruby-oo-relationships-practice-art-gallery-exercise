@@ -24,31 +24,32 @@ class Artist
   def galleries
    all_galleries=[]
     Painting.all.each do |a|
-             if a.artist==self
-         all_galleries<<a.galleries
-       end
+      if a.artist==self
+         all_galleries<<a.gallery
+      end
      end
   all_galleries.uniq
   end
 
-  def citiies
-  #  Painting.galleries.city
+  def cities
+    galleries.map{|c| c.city}
+  end
+
+  def self.total_experience
+    xp=[]
+    @@all.each do |y|
+    xp << y.years_experience
+    end
+    xp.inject{|sum,x| sum+ x}
   end
 
   def self.most_prolific
-    # xp=[]
-    # artist_instance=[]
-    # #return instance of artist with highest amount of paintings per year of experience.
-    # Painting.all.each do |i|
-    #   if i.artist == self
-    #     count +=1
-    #     xp << i.artist.years_experience
-    #     artist_instance << i.artist
-    #   end
-    #   end
-    #   xp
-    #   @@artist_instance
-   end
+    # num_paintings =[]
+    # @@all.each do |p|
+    # num_paintings << p.years_experience/(p.galleries.count).to_f
+    # end
+    #num_paintings
+  end 
 
 end
 

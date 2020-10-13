@@ -30,14 +30,17 @@ class Gallery
   end
 
   def artist_name
-   # self.map do |n|
-    #  if n.name}
+    artists.map{|n| n.name}.uniq
   end
 
   def most_expensive_painting
-    Painting.self.map do |p|
-      p.price.max
+    all_prices=[]
+      Painting.all.each do |g|
+      if g.gallery==self
+         all_prices<<g.price 
+      end
     end
+    all_prices.max()
   end
   
 end
